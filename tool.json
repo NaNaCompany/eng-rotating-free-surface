@@ -1,0 +1,74 @@
+{
+  "category": "유체역학",
+  "category_en": "Fluid mechanics",
+  "id": "E138",
+  "slug": "eng-rotating-free-surface",
+  "title": "회전 용기 수면 높이차 계산기",
+  "title_en": "Rotating Liquid Free-Surface Height Difference Calculator",
+  "fields": [
+    {
+      "key": "omega",
+      "label": "회전 각속도",
+      "label_en": "Angular velocity",
+      "dimension": "angularSpeed",
+      "example": 10,
+      "constraint": "signed",
+      "display_unit": "rads",
+      "display_value": "10"
+    },
+    {
+      "key": "rfirst",
+      "label": "첫 위치의 회전축 거리 r₁",
+      "label_en": "First radial distance r₁",
+      "dimension": "length",
+      "example": 0,
+      "constraint": "nonnegative",
+      "display_unit": "m",
+      "display_value": "0"
+    },
+    {
+      "key": "rsecond",
+      "label": "두 번째 위치의 회전축 거리 r₂",
+      "label_en": "Second radial distance r₂",
+      "dimension": "length",
+      "example": 0.1,
+      "constraint": "nonnegative",
+      "display_unit": "m",
+      "display_value": "0.10000000000000001"
+    },
+    {
+      "key": "g",
+      "label": "중력가속도",
+      "label_en": "Gravitational acceleration",
+      "dimension": "acceleration",
+      "example": 9.80665,
+      "constraint": "positive",
+      "display_unit": "ms2",
+      "display_value": "9.8066499999999994"
+    }
+  ],
+  "result_label": "두 번째 − 첫 번째 수면 높이 Δz",
+  "result_label_en": "Second minus first surface height Δz",
+  "result_dimension": "length",
+  "formula": "Δz = z(r₂)−z(r₁) = ω²(r₂²−r₁²)/(2g)",
+  "purpose": "액체가 용기와 함께 강체 회전할 때 두 반지름 위치 사이의 부호 있는 자유수면 높이차를 계산합니다.",
+  "purpose_en": "Calculate the signed free-surface height difference between two radial positions when liquid rotates as a rigid body with its container.",
+  "assumptions": "수직축을 중심으로 일정한 각속도로 강체 회전하며 중력과 자유수면 압력이 일정합니다. 두 위치에 실제 액체가 있어야 하고 넘침이나 바닥 노출이 없어야 합니다. 결과는 z(r₂)−z(r₁)이므로 두 번째 위치가 축에 가까우면 음수입니다. 정지 시 수심이나 필요한 액체량은 계산하지 않습니다.",
+  "assumptions_en": "Required: steady rigid-body rotation about a vertical axis, uniform gravity and constant surface pressure, with liquid present at both radii and no overflow or dry bottom. The result is z(r₂)−z(r₁), negative when the second radius is smaller. Excluded: determining absolute depth or liquid volume.",
+  "sources": [
+    {
+      "label": "Penn State: Fluids in rigid-body motion",
+      "url": "https://www.me.psu.edu/cimbala/Learning/Fluid/Rigid_body/rigid_body.htm"
+    },
+    {
+      "label": "Oberlin: Rotating liquid surface equation",
+      "url": "https://www2.oberlin.edu/physics/catalog/demonstrations/optics/rotatingwater.html"
+    }
+  ],
+  "condition": "강체 회전과 두 위치의 액체 존재·넘침 없음·바닥 노출 없음을 확인했습니다.",
+  "condition_en": "I confirmed rigid-body rotation, liquid at both radii, no overflow and no dry bottom.",
+  "site": "https://nanalab.kr/eng-rotating-free-surface/",
+  "repository": "https://github.com/NaNaCompany/eng-rotating-free-surface",
+  "groups": [],
+  "output_unit": "m"
+}

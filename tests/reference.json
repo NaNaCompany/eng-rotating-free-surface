@@ -1,0 +1,65 @@
+{
+  "id": "E138",
+  "value": 0.050985810648896415,
+  "reference70": "0.05098581064889641212850463715947851712868308749674965457113285372680783",
+  "method": "Independent Python Decimal with 80-digit working precision, reported to 70 significant digits; direct physical formula. E140 uses 260-step dimensional-wavenumber bisection, independent of the runtime dimensionless solver.",
+  "cases": [
+    {
+      "name": "reversing position reverses height",
+      "values": {
+        "rfirst": 0.1,
+        "rsecond": 0
+      },
+      "expected": -0.050985810648896415,
+      "reference70": "-0.05098581064889641212850463715947851712868308749674965457113285372680783"
+    },
+    {
+      "name": "reversing rotation preserves surface",
+      "values": {
+        "omega": -10
+      },
+      "expected": 0.050985810648896415,
+      "reference70": "0.05098581064889641212850463715947851712868308749674965457113285372680783"
+    },
+    {
+      "name": "no rotation is flat",
+      "values": {
+        "omega": 0
+      },
+      "expected": 0.0,
+      "reference70": "0e+3"
+    },
+    {
+      "name": "equal radii have equal height",
+      "values": {
+        "rfirst": 0.1,
+        "rsecond": 0.1
+      },
+      "expected": 0.0,
+      "reference70": "0e+3"
+    },
+    {
+      "name": "nearby radii",
+      "values": {
+        "rfirst": 1,
+        "rsecond": 1.000000000001,
+        "omega": 2,
+        "g": 10
+      },
+      "expected": 4.0003556023313646e-13,
+      "reference70": "4.0003556023313644020725656175924401515328729557474662925642405753024e-13",
+      "input_note": "Near-cancellation case uses the exact binary64 values of the JSON numeric inputs, independently converted with Decimal.from_float."
+    },
+    {
+      "name": "finite difference despite overflowing radius squared",
+      "values": {
+        "rfirst": 1e+200,
+        "rsecond": 2e+200,
+        "omega": 1e-100,
+        "g": 1e+200
+      },
+      "expected": 1.5,
+      "reference70": "1.5"
+    }
+  ]
+}
